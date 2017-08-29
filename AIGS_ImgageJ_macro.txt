@@ -1,0 +1,44 @@
+//---------------------------------------------------------------------------------------
+// AIGS_ImageJ_macro.txt
+//
+// AIGS_ImageJ_macro.txt is an ImageJ macro that steps through the image processing
+// functions outlined in Strom et al. (2001). The macro starts with a cropped RGB image
+// and returns the measured particles sizes in pixels along with an image showing the 
+// identified particles. More information on how to use the macro is found in the Readme
+// file.
+//
+// Strom, K. B., Kuhns, R. D., & Lucas, H. J. (2010). Comparison of Automated 
+//	Image-Based Grain Sizing to Standard Pebble-Count Methods. Journal of Hydraulic
+//	Engineering, 136(8), 461-473.
+//
+// Version: 2010-Oct-21
+// Authors: AK and KBS
+//--------------------------------------------------------------------------------------
+
+dir1=getDirectory("Choose Source Directory");
+dir2=getDirectory("Choose Destination Directory");
+list = getFileList(dir1);
+setBatchMode(true);
+Median=getNumber("Median Radius Pixels",5);
+SubBack=getNumber("Subtract Background, Rolling Ball pixels",15);
+for (i=0; i<list.length; i++) {
+   open(dir1+list[i]);
+   path = dir2+list[i];
+   w=getWidth();
+   h=getHeight();
+   run("8-bit");
+   run("Median...", "radius=Median");
+   run("Subtract Background...", "rolling=SubBack light");
+   setAutoThreshold();
+   run("Convert to Mask");
+   run("Invert");
+   run("Close-");
+   makeRectangle(4, 4, w-8, h-8);
+   run("Watershed");
+   run("Analyze Particles...", "size=16-Infinity circularity=0.00-1.00 show=Ellipses display exclude record");
+   dotIndex = lastIndexOf(path, ".");
+   path = substring(path, 0, dotIndex); // remove extension
+   saveAs("Measurements", path+".txt");
+   run("Save", "save=["+path+".tif]");
+   run("Close");
+}
