@@ -4,7 +4,7 @@
 ## Why use image processing to size river gravel?
 
 Studies in the fluvial environment often require characterization of the bed material grain-size distribution for purposes such as obtaining roughness length-scale estimates, sediment transport calculations, geomorphic/aquatic habitat classification, and general monitoring. Surface layer sediments in gravel bed rivers are often characterized with pebble counts which require an operator to select and physically measure the axes of the individual grains or characterize them with a sizing template. In recent years, image analysis procedures have been used to automatically extract grain-size information from digital images of sediment beds. This method has the advantage of significantly reducing field time for sampling, sampling the bed sediments non-intrusively, and obtaining samples over a smaller sampling footprint to keep from blending spatial heterogeneity; the major drawback to the method is that it can only measure the size of the particles as-they-lie in the image. Our research focuses on 1) optimizing standard image processing procedures to best measure the particles as-they-lie in the image, and 2) comparing grain size distributions obtained with different pebble count methods and the automated image processing method.
-![Gravel bed](http://www.strom.cee.vt.edu/wp-content/uploads/2015/02/GravelTexas-1-1024x768.jpg)
+![Gravel bed](AGS-StromEtal2010/GravelBedSample.jpg)
 
 ## The ImageJ macro
 
@@ -22,12 +22,12 @@ The macro assumes that everything in the image should be measured and treated as
 
 3) From within ImageJ run the macro following these steps
 
-- open the macro using command-o
-- run the macro using command-r
-- select the source directory within the popup dialog
-- select the output directory within the popup dialog
-- enter the radius for the median filter (default is 5 pixels)
-- enter the radius for the rolling-ball in the background subtraction function (default is 15 pixels)
+  - open the macro using command-o
+  - run the macro using command-r
+  - select the source directory within the popup dialog
+  - select the output directory within the popup dialog
+  - enter the radius for the median filter (default is 5 pixels)
+  - enter the radius for the rolling-ball in the background subtraction function (default is 15 pixels)
 
 The macro will then perform the series of operations on all images stored in the source directory and will store text files of particle size information (in pixels) in the destination directory along with images of the identified particles. The data from each image can then be translated from pixels to some physical length using the know pixel-to-physical length ratio. The data can then used to compute various grain size information. Note that numerical sieving of the output yields areal, frequency-by-number grain-size distributions.
 
