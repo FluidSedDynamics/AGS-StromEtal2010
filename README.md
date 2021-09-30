@@ -1,6 +1,8 @@
 # AGS-StromEtal2010
 **Overview:** This repository contains an [ImageJ][1] macro with sample images that can be used to get familiar with the processing procedures outlined in Strom et al. (2010)
 
+[![DOI](https://zenodo.org/badge/101785249.svg)](https://zenodo.org/badge/latestdoi/101785249)
+
 ## Why use image processing to size river gravel?
 
 <img align="left" src="https://github.com/FluidSedDynamics/AGS-StromEtal2010/blob/master/GravelBedSample.jpg" width="400"> Studies in the fluvial environment often require characterization of the bed material grain-size distribution for purposes such as obtaining roughness length-scale estimates, sediment transport calculations, geomorphic/aquatic habitat classification, and general monitoring. Surface layer sediments in gravel bed rivers are often characterized with pebble counts which require an operator to select and physically measure the axes of the individual grains or characterize them with a sizing template. In recent years, image analysis procedures have been used to automatically extract grain-size information from digital images of sediment beds. This method has the advantage of significantly reducing field time for sampling, sampling the bed sediments non-intrusively, and obtaining samples over a smaller sampling footprint to keep from blending spatial heterogeneity; the major drawback to the method is that it can only measure the size of the particles as-they-lie in the image. 
